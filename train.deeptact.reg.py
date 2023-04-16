@@ -1,6 +1,6 @@
 import os
 from keras.models import load_model
-from my_models import attention
+from attention import attention
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 from sklearn import metrics
 import h5py
