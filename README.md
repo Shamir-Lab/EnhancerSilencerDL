@@ -10,8 +10,8 @@ input: data file, and target directory for the results
            An N*1000 target matrix: a per-position value that is a positive activation signal for enhancers, negative repression signal for silencers, and 0 otherwise.
            An N*3 target class matrix.
 
-Download the data from: https://drive.google.com/file/d/16Zzf0OCCWdjcvUuwysWfMjvm9iPRZSjC/view?usp=sharing
-Decompress the file to 'data' folder
+Download the data from: https://drive.google.com/file/d/16Zzf0OCCWdjcvUuwysWfMjvm9iPRZSjC/view?usp=sharing .
+Decompress the file to 'data' folder.
 
 Training a regression model:
 
