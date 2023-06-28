@@ -7,6 +7,10 @@ import h5py
 import tensorflow as tf
 import keras.backend as K
 from keras.layers import Layer
+from keras.layers import Dense
+from keras.models import Model
+from keras.regularizers import L1L2
+from keras.constraints import max_norm
 
 if tf.test.gpu_device_name():
     print('Default GPU Device:{}'.format(tf.test.gpu_device_name()))
@@ -78,11 +82,20 @@ def run_model(data, model, save_dir):
         of.write("MAE: %f\n" % mae)
         of.write("MSE: %f\n" % mse)
 
+    # generate a new model for classification based on the trained regression model
+    last_layer = parallel_model.output
+    output = Dense(300,
+                   kernel_regularizer=L1L2(l1=1e-8, l2=5e-7), kernel_constraint=max_norm(1))(last_layer)
+    output = Dense(3, activation='softmax',
+                   kernel_regularizer=L1L2(l1=1e-8, l2=5e-7), kernel_constraint=max_norm(1))(output)
+    model_for_class = Model(parallel_model.input, output)
+    parallel_model.trainable = False
+    model_for_class.save(save_dir+"/model.reg_trained.for_class.hdf5")
+
 def model_predict(data, model):
     print("prediction on test samples ...")
     y = model.predict(data, batch_size=1000, verbose=1)
     return y
-
 
 def load_dataset(datafile):
     data = {}
@@ -95,7 +108,7 @@ def load_dataset(datafile):
     return data
 
 def train_model(data, results_dir):
-    model_file = WORK_DIR + "/src/model.deeptact.reg.7features.hdf5"
+    model_file = WORK_DIR + "/model.for_reg.hdf5"
     model = load_model(model_file, compile=False, custom_objects={'attention': attention})
     if not os.path.exists(data):
         print("no data file" + data)
@@ -105,7 +118,6 @@ def train_model(data, results_dir):
 
     data = load_dataset(data)
     run_model(data, model, results_dir)
-
 
 if __name__ == "__main__":
     import sys

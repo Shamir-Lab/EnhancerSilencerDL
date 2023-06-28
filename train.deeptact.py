@@ -98,7 +98,7 @@ def load_dataset(datafile):
     return data
 
 def train_model(data, results_dir):
-    model_file = WORK_DIR + "src/model.deeptact.7features.hdf5"
+    model_file = WORK_DIR + "/model.reg_trained.for_class.hdf5"
     model = load_model(model_file, compile=False, custom_objects={'attention': attention})
 
     if not os.path.exists(data):
