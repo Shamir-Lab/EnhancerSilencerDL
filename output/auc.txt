@@ -1,0 +1,4 @@
+enhancer AUROC: 0.918482
+enhancer AUPR: 0.551147
+silencer AUROC: 0.967985
+silencer AUPR: 0.856289
