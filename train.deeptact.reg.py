@@ -33,7 +33,7 @@ GPUS = 4
 WORK_DIR = "./"
 
 def run_model(data, model, save_dir):
-    weights_file = os.path.join(save_dir, "model_weights.hdf5")
+    weights_file = os.path.join(save_dir, "model_weights.reg.hdf5")
     model_file = os.path.join(save_dir, "single_model.hdf5")
     model.save(model_file)
 
@@ -108,7 +108,7 @@ def load_dataset(datafile):
     return data
 
 def train_model(data, results_dir):
-    model_file = WORK_DIR + "/model.for_reg.hdf5"
+    model_file = WORK_DIR + "/models/model.for_reg.hdf5"
     model = load_model(model_file, compile=False, custom_objects={'attention': attention})
     if not os.path.exists(data):
         print("no data file" + data)
