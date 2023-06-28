@@ -11,15 +11,19 @@ input: data file, and target directory for the results
            An N*3 target class matrix.
  
 Training a regression model:
-python train.deeptact.reg.py  ./data/data_training.hdf5 ./output/
+
+        python train.deeptact.reg.py  ./data/data_training.hdf5 ./output/
 
 output: in the directory ./output/
+        
         mae.txt
         model_weights.reg.hdf5
 
 Training a classification model:
-python train.deeptact.py  ./data/data_training.hdf5 ./output/
+
+        python train.deeptact.py  ./data/data_training.hdf5 ./output/
 
 output: in the directory ./output/
+
         auc.txt
         model_weights.class.hdf5
