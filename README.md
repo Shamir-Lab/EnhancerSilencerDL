@@ -14,7 +14,7 @@ Download the data and decompress into 'data' folder:
 
 train,validation and test data: [data.hdf5.gz](https://drive.google.com/file/d/16Zzf0OCCWdjcvUuwysWfMjvm9iPRZSjC/view?usp=sharing)
 
-Left-out data: [data.left_out.hdf5.gz](https://drive.google.com/file/d/1n-QQhS9hS6_nfnRxz2t46G_BfUu4A2S4/view?usp=sharing)
+Exploratory data: [data.left_out.hdf5.gz](https://drive.google.com/file/d/1n-QQhS9hS6_nfnRxz2t46G_BfUu4A2S4/view?usp=sharing)
 
 Training a regression model:
 
